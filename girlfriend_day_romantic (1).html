@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy National Girlfriend Day</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: pink;
+      color: #333;
+      overflow: hidden;
+    }
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    h1 {
+      font-size: 3em;
+      margin: 0.5em 0;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 2em;
+    }
+    button {
+      background-color: #fff0f6;
+      border: 2px solid #ff69b4;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #ffd6e8;
+    }
+    .emoji {
+      font-size: 5em;
+    }
+    .poem {
+      font-size: 1.1em;
+      max-width: 600px;
+      text-align: left;
+      margin: 0 auto;
+    }
+    .photo img {
+      width: 200px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .falling-loves {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .love {
+      position: absolute;
+      top: -10%;
+      font-size: 2em;
+      animation: fall 5s linear infinite;
+      color: #ff80ab;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10%); }
+      100% { transform: translateY(110vh); }
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="we_fell_in_love_in_october (1).mp3" type="audio/mpeg">
+  </audio>
+  <div class="falling-loves" id="fallingContainer"></div>
+
+  <div class="container page page1">
+    <h1>Happy National Girlfriend Day</h1>
+    <p>Click the next button</p>
+    <button onclick="nextPage(2)">Next</button>
+  </div>
+
+  <div class="container page page2 hidden">
+    <div class="emoji">💌</div>
+    <button onclick="nextPage(3)">Open</button>
+    <button onclick="nextPage(2.5)">No ty</button>
+  </div>
+
+  <div class="container page page2-5 hidden">
+    <div class="emoji">🥺</div>
+    <p>awh... let's try again please...? &gt;_&lt;</p>
+    <button onclick="nextPage(2)">Again..?</button>
+  </div>
+
+  <div class="container page page3 hidden">
+    <h1>Untukmu, Savica 💖</h1>
+    <div class="photo">
+      <img src="WhatsApp Image 2025-07-30 at 22.56.06_feb715c3.jpg" alt="Foto Savica">
+    </div>
+    <div class="poem">
+Dia tidak datang dengan gemuruh atau kejutan besar<br>
+Tapi kehadirannya seperti pagi yang tenang<br>
+Masuk pelan ke dalam hidupku<br>
+Lalu tiba-tiba jadi bagian yang tak bisa dilepas<br><br>
+Tatapannya seperti senja<br>
+Hangat dan menenangkan<br>
+Tapi juga menyimpan dalam diam<br>
+Hal-hal yang tak bisa kugapai sepenuhnya<br><br>
+Dia bukan seseorang yang akan kau temukan dalam keramaian<br>
+Tapi jika kau diam cukup lama<br>
+Dan mendengarkan dunia dengan hati yang terbuka<br>
+Kau mungkin akan merasakannya<br><br>
+Ia seperti melodi lama yang terputar tanpa sengaja<br>
+Lalu kau sadar, kau hafal setiap nadanya<br>
+Padahal kau tak pernah benar-benar mengingatnya<br><br>
+Dan seperti itu dia<br>
+Masuk ke dalam puisi-puisi yang tak pernah kutulis<br>
+Menjadi lagu yang tak pernah kuputar<br>
+Tapi selalu terdengar setiap malam ketika aku mencoba tidur
+    </div>
+  </div>
+
+  <script>
+    const loves = ['💖', '🌸', '💕', '💌'];
+    function createLove() {
+      const love = document.createElement('div');
+      love.classList.add('love');
+      love.innerText = loves[Math.floor(Math.random() * loves.length)];
+      love.style.left = Math.random() * 100 + 'vw';
+      love.style.animationDuration = 3 + Math.random() * 5 + 's';
+      document.getElementById('fallingContainer').appendChild(love);
+      setTimeout(() => love.remove(), 8000);
+    }
+    setInterval(createLove, 300);
+
+    function nextPage(pageNum) {
+      document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+      document.querySelector(`.page${pageNum}`)?.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
